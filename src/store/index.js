@@ -2,15 +2,38 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const LOCAL_STORAGE_KEY = "eventifyStore"; //this should be in .env file
+
+//initial state
+const initialState = {
+  userInfo: null,
+  lang: "en",
+  events: [],
+  favorites: [],
+  currentEvent: {},
+};
+
 const useAppStore = create(
   persist(
     (set) => ({
-      userInfo: null,
-      lang: "en",
+      // State
+      ...initialState,
+
+      // Actions
       setUserInfo: (userInfo) => set({ userInfo }),
+      setLang: (lang) => set({ lang }),
+      setEvents: (events) => set({ events }),
+      setFavorites: (favorites) => set({ favorites }),
+      setCurrentEvent: (currentEvent) => set({ currentEvent }),
+
+      // New action to clear state and storage
+      clearStorage: async () => {
+        await AsyncStorage.removeItem(LOCAL_STORAGE_KEY);
+        set({ ...initialState });
+      },
     }),
     {
-      name: "app-store",
+      name: LOCAL_STORAGE_KEY,
       storage: {
         getItem: async (key) => {
           const value = await AsyncStorage.getItem(key);

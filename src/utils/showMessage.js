@@ -1,7 +1,7 @@
 import Toast from "react-native-root-toast";
 import { colors } from "../utils";
 
-const showMessage = (text, error = false, color, opacity) => {
+export const showMessage = (text, error = false, color, opacity) => {
   return Toast.show(text, {
     duration: Toast.durations.LONG,
     position: Toast.positions.BOTTOM,
@@ -14,5 +14,3 @@ const showMessage = (text, error = false, color, opacity) => {
     opacity: opacity ?? 1,
   });
 };
-
-export default showMessage;
