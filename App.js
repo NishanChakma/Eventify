@@ -1,7 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import RootNavigation from "./src/navigation";
+import { I18nextProvider } from "react-i18next";
+import LanguageHooks from "./src/hooks/LanguageHooks";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 if (!__DEV__) {
   SplashScreen.setOptions({
@@ -18,18 +23,21 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <RootSiblingParent>
+      <I18nextProvider i18n={LanguageHooks}>
+        <SafeAreaProvider style={{ backgroundColor: "#000" }}>
+          <StatusBar barStyle={"light-content"} />
+          <SafeAreaView style={styles.container}>
+            <RootNavigation />
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </I18nextProvider>
+    </RootSiblingParent>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });

@@ -14,7 +14,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.nishan.Eventify"
+      "bundleIdentifier": "com.nishan.eventify",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +23,8 @@
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.nishan.Eventify"
+      "package": "com.nishan.eventify",
+      "googleServicesFile": "./google-services.json"
     },
     "plugins": [
       [
@@ -36,7 +38,16 @@
           },
           "imageWidth": 200
         }
-      ]
+      ],
+      ["expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth"   
     ],
     "web": {
       "favicon": "./assets/favicon.png"

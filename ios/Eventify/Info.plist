@@ -27,7 +27,19 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.nishan.Eventify</string>
+          <string>com.nishan.eventify</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.1029749318083-i9mhv9eq4tul9db2ss1p0vbiug112ehr</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+eventify</string>
         </array>
       </dict>
     </array>
@@ -67,7 +79,7 @@
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
+    <string>Automatic</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
   </dict>

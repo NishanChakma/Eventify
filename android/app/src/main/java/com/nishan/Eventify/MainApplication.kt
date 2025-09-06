@@ -1,4 +1,4 @@
-package com.nishan.Eventify
+package com.nishan.eventify
 
 import android.app.Application
 import android.content.res.Configuration
