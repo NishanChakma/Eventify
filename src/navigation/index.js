@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import useAppStore from "../store";
 import { getAuth, onAuthStateChanged } from "@react-native-firebase/auth";
 import i18n from "../hooks/LanguageHooks";
+import MainNavigator from "./MainNavigator";
 
 const Stack = createStackNavigator();
 
 const RootNavigation = () => {
   const { userInfo, lang } = useAppStore();
-  console.log(">>>>sssssss", userInfo, lang);
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
@@ -41,14 +41,19 @@ const RootNavigation = () => {
     >
       <Stack.Navigator
         initialRouteName={
-          user && userInfo?.email ? AppRoutes.HOMESCREEN : AppRoutes.AUTHSCREEN
+          user && userInfo?.email
+            ? AppRoutes.HOMENAVIGATOR
+            : AppRoutes.AUTHSCREEN
         }
         screenOptions={() => ({
           headerShown: false,
         })}
       >
         <Stack.Screen name={AppRoutes.AUTHSCREEN} component={AuthScreen} />
-        <Stack.Screen name={AppRoutes.HOMESCREEN} component={HomeScreen} />
+        <Stack.Screen
+          name={AppRoutes.HOMENAVIGATOR}
+          component={MainNavigator}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

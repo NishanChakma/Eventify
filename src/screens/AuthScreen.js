@@ -111,7 +111,7 @@ const AuthScreen = () => {
       // Navigate to main/home
       navigation.reset({
         index: 0,
-        routes: [{ name: AppRoutes.HOMESCREEN }],
+        routes: [{ name: AppRoutes.HOMENAVIGATOR }],
       });
     } catch (err) {
       handleFirebaseError(err);
