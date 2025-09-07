@@ -26,7 +26,7 @@ export default function App() {
     <RootSiblingParent>
       <I18nextProvider i18n={LanguageHooks}>
         <SafeAreaProvider style={{ backgroundColor: "#000" }}>
-          <StatusBar barStyle={"light-content"} />
+          <StatusBar style="light" />
           <SafeAreaView style={styles.container}>
             <RootNavigation />
           </SafeAreaView>
