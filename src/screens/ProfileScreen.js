@@ -3,7 +3,7 @@ import { useState } from "react";
 import { colors } from "../utils";
 import ProfileCard from "../components/ProfileCard";
 import { getAuth, signOut } from "@react-native-firebase/auth";
-import { showMessage } from "../utils";
+import { showMessage } from "../hooks/ShowMessage";
 import { useNavigation } from "@react-navigation/native";
 import AppRoutes from "../navigation/AppRoutes";
 import LanguageModal from "../components/modal/LanguageModal";

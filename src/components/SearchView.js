@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, TextInput, StyleSheet, Image, Keyboard } from "react-native";
-import { colors, showMessage } from "../utils";
+import { colors } from "../utils";
+import { showMessage } from "../hooks/ShowMessage";
 import PrimaryButton from "./PrimaryButton";
 import Loading from "./LoadingScreen";
 import API from "../services/api";
@@ -22,7 +23,7 @@ const SearchScreen = () => {
 
   const fetchData = async () => {
     if (!form.query.trim() && !form.city.trim()) {
-      return showMessage("Please enter an event name or city to search.");
+      return showMessage("Please enter an event name or city to search.", true);
     }
 
     setLoading(true);

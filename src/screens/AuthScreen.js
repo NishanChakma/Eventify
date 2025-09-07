@@ -13,12 +13,8 @@ import LoadingScreen from "../components/LoadingScreen";
 import { useTranslation } from "react-i18next";
 import PrimaryButton from "../components/PrimaryButton";
 import HandleInput from "../components/HandleInput";
-import {
-  colors,
-  validateEmail,
-  handleFirebaseError,
-  showMessage,
-} from "../utils";
+import { colors, validateEmail, handleFirebaseError } from "../utils";
+import { showMessage } from "../hooks/ShowMessage";
 import {
   createUserWithEmailAndPassword,
   getAuth,

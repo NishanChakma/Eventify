@@ -1,7 +1,6 @@
-import showMessage from "./showMessage";
-
 // 🔹 Centralized error handler
-export const handleFirebaseError = (error) => {
+export const handleFirebaseError = async (error) => {
+  const showMessage = await import("../hooks/ShowMessage");
   const errMsg = String(error);
   console.log("Firebase Error: ", errMsg);
   if (errMsg.includes("auth/email-already-in-use")) {
