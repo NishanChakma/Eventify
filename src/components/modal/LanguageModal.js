@@ -1,9 +1,9 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Modal from "react-native-modal";
-import close from "../../assets/close.png";
 import { colors } from "../../utils";
 import i18n from "../../hooks/LanguageHooks";
 import useAppStore from "../../store";
+import close from "../../assets/close.png";
 
 const options = [
   {

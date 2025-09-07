@@ -6,7 +6,7 @@ const LOCAL_STORAGE_KEY = "eventifyStore"; //this should be in .env file
 
 //initial state
 const initialState = {
-  userInfo: null,
+  userInfo: {},
   lang: "en",
   events: [],
   favorites: [],
@@ -26,7 +26,7 @@ const useAppStore = create(
       setFavorites: (favorites) => set({ favorites }),
       setCurrentEvent: (currentEvent) => set({ currentEvent }),
 
-      // New action to clear state and storage
+      //Clear Storage
       clearStorage: async () => {
         await AsyncStorage.removeItem(LOCAL_STORAGE_KEY);
         set({ ...initialState });

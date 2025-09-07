@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -8,8 +8,8 @@ import {
   Easing,
   Text,
 } from "react-native";
-import loading from "../assets/love.png";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import loading from "../assets/love.png";
 
 const LoadingScreen = ({ isLoading, onRequestClose, fromTab }) => {
   const spinAnim = new Animated.Value(0);

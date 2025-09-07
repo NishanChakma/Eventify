@@ -1,9 +1,9 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import { colors } from "../utils";
-import glob from "../assets/glob.png";
 import useAppStore from "../store";
 import LanguageModal from "../components/modal/LanguageModal";
+import glob from "../assets/glob.png";
 
 const Header = () => {
   const [languageModal, setlanguageModal] = useState(false);

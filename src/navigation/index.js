@@ -1,7 +1,7 @@
 import { DarkTheme, NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AppRoutes from "./AppRoutes";
-import { AuthScreen, HomeScreen } from "../screens";
+import { AuthScreen } from "../screens";
 import { useEffect, useState } from "react";
 import useAppStore from "../store";
 import { getAuth, onAuthStateChanged } from "@react-native-firebase/auth";

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { View, TextInput, StyleSheet, Image, Keyboard } from "react-native";
 import { colors, showMessage } from "../utils";
-import searchIcon from "../assets/search.png";
-import locationIcon from "../assets/location.png";
 import PrimaryButton from "./PrimaryButton";
 import Loading from "./LoadingScreen";
 import API from "../services/api";
 import { useTranslation } from "react-i18next";
 import useAppStore from "../store";
+// Icons
+import searchIcon from "../assets/search.png";
+import locationIcon from "../assets/location.png";
 
 const SearchScreen = () => {
   const { t } = useTranslation();
