@@ -36,5 +36,6 @@
   "from": "Form",
   "BookNow": "Book Now",
   "secure": "Secure Payment, Instant Confirmation",
-  "noLocation": "Location not available"
+  "noLocation": "Location not available",
+  "privacy": "Privacy Policy"
 }

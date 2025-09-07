@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { colors } from "../utils";
 import ProfileCard from "../components/ProfileCard";
 import { getAuth, signOut } from "@react-native-firebase/auth";
@@ -9,10 +9,12 @@ import AppRoutes from "../navigation/AppRoutes";
 import LanguageModal from "../components/modal/LanguageModal";
 import { useTranslation } from "react-i18next";
 import useAppStore from "../store";
+import * as Linking from "expo-linking";
 // Icons
 import bg from "../assets/bg.png";
 import men from "../assets/men.png";
 import glob from "../assets/glob.png";
+import privacy from "../assets/privacy.png";
 import logout from "../assets/logout.png";
 
 const ProfileScreen = () => {
@@ -21,19 +23,33 @@ const ProfileScreen = () => {
   const { userInfo, clearStorage } = useAppStore();
   const [languageModal, setlanguageModal] = useState(false);
 
-  const handleLogout = async () => {
-    await signOut(getAuth())
-      .then(() => {
-        clearStorage();
-        navigation.reset({
-          index: 0,
-          routes: [{ name: AppRoutes.AUTHSCREEN }],
-        });
-      })
-      .catch(
-        () => showMessage("Error! Please check your internet connection", true) //due to no backend firebase will unable to logout without internet);
-      );
-  };
+  const handleLogout = useCallback(async () => {
+    try {
+      await signOut(getAuth());
+      clearStorage();
+      navigation.reset({
+        index: 0,
+        routes: [{ name: AppRoutes.AUTHSCREEN }],
+      });
+    } catch (error) {
+      showMessage("Error! Please check your internet connection", true);
+    }
+  }, [navigation, clearStorage]);
+
+  const openPrivacyPolicy = useCallback(async () => {
+    const url =
+      "https://www.freeprivacypolicy.com/live/bc2824c3-ed98-46e9-a260-ffddb22afc18";
+    try {
+      const supported = await Linking.canOpenURL(url);
+      if (!supported) {
+        return showMessage("Error! Can't open this URL.", true);
+      }
+      await Linking.openURL(url);
+    } catch (error) {
+      console.error("Failed to open URL:", error);
+      showMessage("Error! Something went wrong while opening the URL.", true);
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -50,6 +66,11 @@ const ProfileScreen = () => {
           logo={glob}
           title={t("language")}
           onPress={() => setlanguageModal(true)}
+        />
+        <ProfileCard
+          logo={privacy}
+          title={t("privacy")}
+          onPress={openPrivacyPolicy}
         />
 
         <ProfileCard

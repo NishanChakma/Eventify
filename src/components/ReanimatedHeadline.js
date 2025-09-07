@@ -9,7 +9,7 @@ import Animated, {
 import { colors } from "../utils";
 
 const SCROLL_TEXT =
-  "Most Common search keywords: Hello, Music, live, concerts, theartre. City Keywords: New York, Chicago, Los Angeles, Paris.";
+  "Most Common search keywords: Hello, Music, Live, Concerts, Theatre, Theater. City Keywords: New York, Chicago, Los Angeles, Paris.";
 
 export default function ScrollingText() {
   const translateX = useSharedValue(5);
