@@ -15,6 +15,8 @@ if (!__DEV__) {
   });
 }
 
+console.log(`Hermes enabled: ${!!global.HermesInternal}`);
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
