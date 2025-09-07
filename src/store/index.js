@@ -10,7 +10,7 @@ const initialState = {
   lang: "en",
   events: [],
   favorites: [],
-  currentEvent: {},
+  event: {},
 };
 
 const useAppStore = create(
@@ -24,7 +24,7 @@ const useAppStore = create(
       setLang: (lang) => set({ lang }),
       setEvents: (events) => set({ events }),
       setFavorites: (favorites) => set({ favorites }),
-      setCurrentEvent: (currentEvent) => set({ currentEvent }),
+      setCurrentEvent: (event) => set({ event }),
 
       //Clear Storage
       clearStorage: async () => {
