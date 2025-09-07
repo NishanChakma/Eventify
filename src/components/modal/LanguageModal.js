@@ -4,6 +4,7 @@ import { colors } from "../../utils";
 import i18n from "../../hooks/LanguageHooks";
 import useAppStore from "../../store";
 import close from "../../assets/close.png";
+import { useCallback } from "react";
 
 const options = [
   {
@@ -19,10 +20,13 @@ const options = [
 const LanguageModal = ({ visible, setVisible }) => {
   const { lang, setLang } = useAppStore();
 
-  const handleSelect = (value) => {
-    setLang(value);
-    i18n.changeLanguage(value);
-  };
+  const handleSelect = useCallback(
+    (value) => {
+      setLang(value);
+      i18n.changeLanguage(value);
+    },
+    [setLang, i18n] // dependencies
+  );
 
   return (
     <Modal
