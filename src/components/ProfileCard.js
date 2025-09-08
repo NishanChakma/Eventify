@@ -1,8 +1,9 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors } from "../utils";
 import rightArrow from "../assets/rightArrow.png";
+import down from "../assets/down.png";
 
-const ProfileCard = ({ logo, title, onPress, style }) => {
+const ProfileCard = ({ logo, title, onPress, style, downBtn = false }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.card, style]}>
@@ -10,7 +11,10 @@ const ProfileCard = ({ logo, title, onPress, style }) => {
           <Image source={logo} style={styles.glob} />
           <Text style={styles.lang}>{title}</Text>
         </View>
-        <Image source={rightArrow} style={styles.rightArrow} />
+        <Image
+          source={downBtn ? down : rightArrow}
+          style={downBtn ? styles.downArr : styles.rightArrow}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -37,6 +41,10 @@ const styles = StyleSheet.create({
   },
   rightArrow: {
     height: 24,
+    width: 12,
+  },
+  downArr: {
+    height: 12,
     width: 12,
   },
   lang: {

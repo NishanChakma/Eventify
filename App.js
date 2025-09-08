@@ -7,6 +7,8 @@ import RootNavigation from "./src/navigation";
 import { I18nextProvider } from "react-i18next";
 import LanguageHooks from "./src/hooks/LanguageHooks";
 import { RootSiblingParent } from "react-native-root-siblings";
+import { NotificationProvider } from "./src/context/NotificationContext";
+import * as Notifications from "expo-notifications";
 
 if (!__DEV__) {
   SplashScreen.setOptions({
@@ -15,9 +17,17 @@ if (!__DEV__) {
   });
 }
 
+SplashScreen.preventAutoHideAsync();
+
 console.log(`Hermes enabled: ${!!global.HermesInternal}`);
 
-SplashScreen.preventAutoHideAsync();
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
 
 export default function App() {
   useEffect(() => {
@@ -25,16 +35,18 @@ export default function App() {
   }, []);
 
   return (
-    <RootSiblingParent>
-      <I18nextProvider i18n={LanguageHooks}>
-        <SafeAreaProvider style={{ backgroundColor: "#000" }}>
-          <StatusBar style="light" />
-          <SafeAreaView style={styles.container}>
-            <RootNavigation />
-          </SafeAreaView>
-        </SafeAreaProvider>
-      </I18nextProvider>
-    </RootSiblingParent>
+    <NotificationProvider>
+      <RootSiblingParent>
+        <I18nextProvider i18n={LanguageHooks}>
+          <SafeAreaProvider style={{ backgroundColor: "#000" }}>
+            <StatusBar style="light" />
+            <SafeAreaView style={styles.container}>
+              <RootNavigation />
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </I18nextProvider>
+      </RootSiblingParent>
+    </NotificationProvider>
   );
 }
 

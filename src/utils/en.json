@@ -37,5 +37,6 @@
   "BookNow": "Book Now",
   "secure": "Secure Payment, Instant Confirmation",
   "noLocation": "Location not available",
-  "privacy": "Privacy Policy"
+  "privacy": "Privacy Policy",
+  "testPush": "Show Push Notification Token"
 }

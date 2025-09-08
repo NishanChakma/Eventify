@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1029749318083-p2hj6qe4mar4kmip5rb32l1irdfgdpst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nishan.eventify",
+            "certificate_hash": "393e1587cc627f9a3b393846f54ab326f82573a7"
+          }
+        },
+        {
           "client_id": "1029749318083-ppej7qlr1trlpqo7m8mgq50uft16lsj2.apps.googleusercontent.com",
           "client_type": 3
         }

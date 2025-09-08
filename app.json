@@ -5,7 +5,6 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
     "jsEngine": "hermes",
     "newArchEnabled": true,
     "splash": {
@@ -21,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#B12300"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.nishan.eventify",
@@ -40,7 +39,8 @@
           "imageWidth": 200
         }
       ],
-      ["expo-build-properties",
+      [
+        "expo-build-properties",
         {
           "ios": {
             "useFrameworks": "static"
@@ -48,7 +48,7 @@
         }
       ],
       "@react-native-firebase/app",
-      "@react-native-firebase/auth"  
+      "@react-native-firebase/auth"
     ],
     "web": {
       "favicon": "./assets/favicon.png"
@@ -57,6 +57,7 @@
       "eas": {
         "projectId": "bd13519f-bcce-4ef3-a2ae-5d5329c218db"
       }
-    }
+    },
+    "owner": "nishan"
   }
 }
