@@ -1,6 +1,20 @@
 # My Expo App
 
-A brief description of your app. Explain what it does and its main features.
+- Login screen (Firebase email-auth)
+- Sign-up screen (Firebase email-auth)
+- Home screen fetching and displaying a list of items from a public REST API
+- Details screen (Home > Search > Click Events)
+- Favorite screen (Home > Search > Click love icon > Favorite)
+- State management using Zustand
+- Navigation implemented with React Navigation
+- Form implementation using React Hook Form (Homescreen → Search Result → Details → Book Now → Form)
+- Animations using Reanimated for headline text(Home screen) and loading indicators(loading screen)
+- Expo push notification system (Profile → Show Push Notification Token → Copy to Clipboard)
+- App icons, metadata, and Privacy Policy screen (Profile → Privacy Policy)
+- Change language option (English and Bengali) → HomeScreen/Profile → Language Modal → Select Language
+- App optimization using the Hermes engine
+- EAS build setup instructions
+
 
 ## Table of Contents
 
