@@ -22,7 +22,6 @@
 - [Development](#development)
 - [EAS Build](#eas-build)
 - [Running the App](#running-the-app)
-- [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
 - [License](#license)
@@ -126,7 +125,14 @@ List of main dependencies:
 - `react-native` – React Native
 - `react-navigation` – Navigation library
 - `axios` – HTTP requests
-- Add more as per your project
+- `i18next` - Handle Language
+- `react-native-firebase` - Authentication
+- `react-native-reanimated-carousel` - Image slider
+- `expo-splash-screen`
+- `react-hook-form`
+- `react-native-reanimated`
+- `react-native-modal`
+- `react-native-phone-input`
 
 ## Contributing
 
