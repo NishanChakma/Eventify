@@ -18,7 +18,7 @@ A brief description of your app. Explain what it does and its main features.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/NishanChakma/Eventify
 cd your-repo
 ```
 
@@ -30,11 +30,6 @@ npm install
 yarn install
 ```
 
-3. Install Expo CLI globally if not installed:
-
-```bash
-npm install -g expo-cli
-```
 
 ## Development
 
