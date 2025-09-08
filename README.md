@@ -1,4 +1,4 @@
-# My Expo App
+# Eventify
 
 - Login screen (Firebase email-auth)
 - Sign-up screen (Firebase email-auth)
