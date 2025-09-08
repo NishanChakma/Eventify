@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-native-phone-input";
@@ -55,138 +56,142 @@ const PurchaseTicketScreen = ({ route }) => {
   return (
     <View style={styles.container}>
       <BackButton />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <ScrollView>
+          <Text style={styles.title}>Purchase Event Ticket</Text>
 
-      <ScrollView>
-        <Text style={styles.title}>Purchase Event Ticket</Text>
-
-        {/* First Name */}
-        <Controller
-          control={control}
-          name="firstName"
-          rules={{ required: "First name is required" }}
-          render={({ field: { onChange, value } }) => (
-            <>
-              <TextInput
-                style={styles.input}
-                placeholder="First Name"
-                placeholderTextColor="#888"
-                value={value}
-                onChangeText={onChange}
-              />
-              {errors.firstName && (
-                <Text style={styles.error}>{errors.firstName.message}</Text>
-              )}
-            </>
-          )}
-        />
-
-        {/* Last Name */}
-        <Controller
-          control={control}
-          name="lastName"
-          rules={{ required: "Last name is required" }}
-          render={({ field: { onChange, value } }) => (
-            <>
-              <TextInput
-                style={styles.input}
-                placeholder="Last Name"
-                placeholderTextColor="#888"
-                value={value}
-                onChangeText={onChange}
-              />
-              {errors.lastName && (
-                <Text style={styles.error}>{errors.lastName.message}</Text>
-              )}
-            </>
-          )}
-        />
-
-        {/* Email */}
-        <Controller
-          control={control}
-          name="email"
-          rules={{
-            required: "Email is required",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Email is invalid",
-            },
-          }}
-          render={({ field: { onChange, value } }) => (
-            <>
-              <TextInput
-                style={styles.input}
-                placeholder="Email"
-                placeholderTextColor="#888"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                value={value}
-                onChangeText={onChange}
-              />
-              {errors.email && (
-                <Text style={styles.error}>{errors.email.message}</Text>
-              )}
-            </>
-          )}
-        />
-
-        {/* Phone Number */}
-        <Controller
-          control={control}
-          name="phoneNumber"
-          rules={{
-            required: "Phone number is required",
-            validate: () =>
-              phoneRef.current?.isValidNumber() || "Invalid phone number",
-          }}
-          render={({ field: { value } }) => (
-            <>
-              <PhoneInput
-                ref={phoneRef}
-                initialCountry="bd"
-                value={value}
-                onChangePhoneNumber={(num) => setValue("phoneNumber", num)}
-                style={styles.phoneInput}
-                textStyle={{ color: "#fff" }}
-              />
-              {errors.phoneNumber && (
-                <Text style={styles.error}>{errors.phoneNumber.message}</Text>
-              )}
-            </>
-          )}
-        />
-
-        {/* Ticket Type Radio Buttons */}
-        <Text style={[styles.label, { paddingTop: 10 }]}>
-          Select Ticket Type:
-        </Text>
-        <View style={styles.radioGroup}>
-          {["regular", "vip"].map((type) => (
-            <TouchableOpacity
-              key={type}
-              style={styles.radioOption}
-              onPress={() => setValue("ticketType", type)}
-            >
-              <View style={styles.radioOuter}>
-                {watch("ticketType") === type && (
-                  <View style={styles.radioInner} />
+          {/* First Name */}
+          <Controller
+            control={control}
+            name="firstName"
+            rules={{ required: "First name is required" }}
+            render={({ field: { onChange, value } }) => (
+              <>
+                <TextInput
+                  style={styles.input}
+                  placeholder="First Name"
+                  placeholderTextColor="#888"
+                  value={value}
+                  onChangeText={onChange}
+                />
+                {errors.firstName && (
+                  <Text style={styles.error}>{errors.firstName.message}</Text>
                 )}
-              </View>
-              <Text style={styles.radioText}>
-                {type === "regular" ? "Regular Ticket" : "VIP Ticket"}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <Text style={styles.total}>Ticket Price: {price}</Text>
-        <Text style={styles.total}>
-          Total Price: {updatedPrice} (Ticket Price + Additional Charge:{" "}
-          {watch("ticketType") === "vip" ? "10" : "0"})
-        </Text>
+              </>
+            )}
+          />
 
-        {/* Submit Button */}
-        <PrimaryButton onPress={handleSubmit(onSubmit)} title={"Purchase"} />
-      </ScrollView>
+          {/* Last Name */}
+          <Controller
+            control={control}
+            name="lastName"
+            rules={{ required: "Last name is required" }}
+            render={({ field: { onChange, value } }) => (
+              <>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Last Name"
+                  placeholderTextColor="#888"
+                  value={value}
+                  onChangeText={onChange}
+                />
+                {errors.lastName && (
+                  <Text style={styles.error}>{errors.lastName.message}</Text>
+                )}
+              </>
+            )}
+          />
+
+          {/* Email */}
+          <Controller
+            control={control}
+            name="email"
+            rules={{
+              required: "Email is required",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Email is invalid",
+              },
+            }}
+            render={({ field: { onChange, value } }) => (
+              <>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Email"
+                  placeholderTextColor="#888"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  value={value}
+                  onChangeText={onChange}
+                />
+                {errors.email && (
+                  <Text style={styles.error}>{errors.email.message}</Text>
+                )}
+              </>
+            )}
+          />
+
+          {/* Phone Number */}
+          <Controller
+            control={control}
+            name="phoneNumber"
+            rules={{
+              required: "Phone number is required",
+              validate: () =>
+                phoneRef.current?.isValidNumber() || "Invalid phone number",
+            }}
+            render={({ field: { value } }) => (
+              <>
+                <PhoneInput
+                  ref={phoneRef}
+                  initialCountry="bd"
+                  value={value}
+                  onChangePhoneNumber={(num) => setValue("phoneNumber", num)}
+                  style={styles.phoneInput}
+                  textStyle={{ color: "#fff" }}
+                />
+                {errors.phoneNumber && (
+                  <Text style={styles.error}>{errors.phoneNumber.message}</Text>
+                )}
+              </>
+            )}
+          />
+
+          {/* Ticket Type Radio Buttons */}
+          <Text style={[styles.label, { paddingTop: 10 }]}>
+            Select Ticket Type:
+          </Text>
+          <View style={styles.radioGroup}>
+            {["regular", "vip"].map((type) => (
+              <TouchableOpacity
+                key={type}
+                style={styles.radioOption}
+                onPress={() => setValue("ticketType", type)}
+              >
+                <View style={styles.radioOuter}>
+                  {watch("ticketType") === type && (
+                    <View style={styles.radioInner} />
+                  )}
+                </View>
+                <Text style={styles.radioText}>
+                  {type === "regular" ? "Regular Ticket" : "VIP Ticket"}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <Text style={styles.total}>Ticket Price: {price}</Text>
+          <Text style={styles.total}>
+            Total Price: {updatedPrice} (Ticket Price + Additional Charge:{" "}
+            {watch("ticketType") === "vip" ? "10" : "0"})
+          </Text>
+
+          {/* Submit Button */}
+          <PrimaryButton onPress={handleSubmit(onSubmit)} title={"Purchase"} />
+        </ScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 };

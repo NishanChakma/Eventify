@@ -30,21 +30,24 @@ const MapsView = () => {
     <View style={styles.container}>
       <Text style={styles.location}>{t("Location")}</Text>
 
-      <MapView
-        style={{ height: 162, width: "100%", borderRadius: 4 }}
-        initialRegion={{
-          latitude: latitude,
-          longitude: longitude,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
-      >
-        <Marker
-          coordinate={{ latitude: latitude, longitude: longitude }}
-          title="Marker Title"
-          description="Marker Description"
-        />
-      </MapView>
+      {/* maps wont works in production due to no API key */}
+      {__DEV__ && (
+        <MapView
+          style={{ height: 162, width: "100%", borderRadius: 4 }}
+          initialRegion={{
+            latitude: latitude,
+            longitude: longitude,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
+          }}
+        >
+          <Marker
+            coordinate={{ latitude: latitude, longitude: longitude }}
+            title="Marker Title"
+            description="Marker Description"
+          />
+        </MapView>
+      )}
 
       <TouchableOpacity onPress={openGoogleMapsApp} style={styles.mapsButton}>
         <Image source={openMaps} style={{ height: 20, width: 20 }} />

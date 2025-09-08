@@ -44,7 +44,8 @@
     "expo-device": "~7.1.4",
     "expo-constants": "~17.1.7",
     "expo-clipboard": "~7.1.5",
-    "expo-system-ui": "~5.0.11"
+    "expo-system-ui": "~5.0.11",
+    "expo-navigation-bar": "~4.2.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

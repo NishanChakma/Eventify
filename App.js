@@ -7,6 +7,7 @@ import RootNavigation from "./src/navigation";
 import { I18nextProvider } from "react-i18next";
 import LanguageHooks from "./src/hooks/LanguageHooks";
 import { RootSiblingParent } from "react-native-root-siblings";
+import * as NavigationBar from "expo-navigation-bar";
 import { NotificationProvider } from "./src/context/NotificationContext";
 import * as Notifications from "expo-notifications";
 
@@ -31,7 +32,12 @@ Notifications.setNotificationHandler({
 
 export default function App() {
   useEffect(() => {
+    // Hide splash screen
     SplashScreen.hide();
+    // Set navigation bar background color
+    NavigationBar.setBackgroundColorAsync("#000000ff");
+    // Optionally change button style (light or dark)
+    NavigationBar.setButtonStyleAsync("light");
   }, []);
 
   return (

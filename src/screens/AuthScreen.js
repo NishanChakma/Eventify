@@ -122,8 +122,8 @@ const AuthScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      style={styles.mainContainer}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       {loading && <LoadingScreen />}
       <ScrollView
@@ -191,6 +191,7 @@ const AuthScreen = () => {
 export default AuthScreen;
 
 const styles = StyleSheet.create({
+  mainContainer: { flex: 1 },
   container: {
     flexGrow: 1,
     alignItems: "center",
