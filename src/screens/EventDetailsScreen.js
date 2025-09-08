@@ -1,38 +1,25 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-
 import EventDescription from "../components/eventDetails/EventDescription";
 import MapsView from "../components/eventDetails/MapsView";
 import BookNow from "../components/eventDetails/BookNow";
 import ImageSlider from "../components/eventDetails/ImageSlider";
 import { colors } from "../utils/colors";
-import { useTranslation } from "react-i18next";
 import useAppStore from "../store";
 
 // icons
-import back from "../assets/back.png";
 import calendarRound from "../assets/calendarRound.png";
 import timeRound from "../assets/timeRound.png";
 import locationRound from "../assets/locationRound.png";
 import EventDetailsCard from "../components/EventDetailsCard";
+import BackButton from "../components/BackButton";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
 const EventDetailsScreen = () => {
-  const { t } = useTranslation();
-  const navigation = useNavigation();
   const { event } = useAppStore();
 
   // Helper functions
@@ -61,15 +48,7 @@ const EventDetailsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
-      >
-        <View style={styles.backContent}>
-          <Image source={back} style={styles.backIcon} />
-          <Text style={styles.backText}>{t("Back")}</Text>
-        </View>
-      </TouchableOpacity>
+      <BackButton />
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <ImageSlider />
@@ -125,29 +104,6 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 20,
     overflow: "hidden",
-  },
-  backButton: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 999,
-    height: 40,
-    backgroundColor: "#000",
-  },
-  backContent: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  backIcon: {
-    width: 25,
-    height: 25,
-  },
-  backText: {
-    fontSize: 14,
-    color: colors.textPrimary,
-    fontWeight: "700",
-    marginLeft: 5,
   },
   eventInfo: {
     paddingHorizontal: 10,
