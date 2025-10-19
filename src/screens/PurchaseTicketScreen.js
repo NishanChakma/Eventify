@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput from "react-native-phone-input";
